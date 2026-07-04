@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.BunnyHop" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/bunny_primary</item>
+        <item name="colorPrimaryContainer">@color/bunny_primary_container</item>
+    </style>
+</resources>

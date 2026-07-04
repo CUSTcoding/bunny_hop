@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Bunny Hop</string>
+    <string name="subtitle">Escaneia um beacon de alerta de cheias e avisa sobre zonas afetadas.</string>
+    <string name="start_hop">Iniciar alerta</string>
+    <string name="stop_hop">Parar alerta</string>
+    <string name="idle">Toque em Iniciar alerta para começar o scan BLE.</string>
+    <string name="scanning">Scan ativo — procurando beacons de cheias…</string>
+    <string name="detection_title">Alerta de Cheias</string>
+    <string name="detection_message">Alerta de cheias em %1$s.</string>
+    <string name="notification_channel_name">Alertas de Cheias</string>
+    <string name="notification_channel_desc">Notificações quando um beacon de cheias estiver no alcance.</string>
+    <string name="permissions_granted">Permissões concedidas.</string>
+    <string name="permissions_denied">Permissões BLE/notificação são necessárias.</string>
+    <string name="no_bluetooth">Este dispositivo não suporta Bluetooth LE.</string>
+    <string name="enable_bluetooth">Ative o Bluetooth antes de iniciar o scan.</string>
+    <string name="scanner_unavailable">Scanner BLE indisponível.</string>
+    <string name="scan_failed">Falha ao iniciar scan BLE.</string>
+    <string name="scan_failed_code">Scan falhou (código %1$d)</string>
+    <string name="zone_detected_status">Alerta de cheias: %1$s detectada (%2$s)</string>
+    <string name="zones_active_status">Zonas em alerta: %1$s</string>
+    <string name="uuid_hint">Beacons CHEIAS_ZONA_* · UUID 7f3a9c21-b5e4-4d8f-a1c6-2e8b4f9d0a73</string>
+    <string name="admin_button">Admin Alertas</string>
+    <string name="test_alert_button">Testar alerta SMS</string>
+    <string name="repeat_alert_button">Repetir alerta agora</string>
+    <string name="relay_active">Retransmissão BLE ativa</string>
+    <string name="relay_inactive">Retransmissão BLE inativa</string>
+    <string name="add_alert_title">Criar alerta</string>
+    <string name="edit_alert_title">Editar alerta</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="alert_fields_required">Preencha nome BLE e mensagem do alerta.</string>
+    <string name="alert_saved">Alerta salvo.</string>
+    <string name="alert_deleted">Alerta excluído.</string>
+    <string name="delete_alert_title">Apagar alerta</string>
+    <string name="delete_alert_message">Remover o alerta para %1$s?</string>
+    <string name="channel_hint">Use BLE, NOTIFICATION, SMS, USSD ou HTTP.</string>
+</resources>

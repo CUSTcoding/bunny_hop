@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/adminTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Administração de Alertas"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:textStyle="bold"
+        android:paddingBottom="12dp" />
+
+    <Button
+        android:id="@+id/addAlertButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Novo alerta" />
+
+    <TextView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nenhum alerta cadastrado. Toque em Novo alerta para adicionar."
+        android:paddingTop="16dp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/alertListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="1dp"
+        android:paddingTop="12dp" />
+</LinearLayout>
