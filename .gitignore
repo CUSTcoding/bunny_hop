@@ -1,0 +1,38 @@
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+venv/
+.venv/
+
+# Jupyter (se usares no futuro)
+.ipynb_checkpoints/
+.gradle/
+**/build/
+local.properties
+
+*.iml
+*.apk
+*.aar
+
+# Android Studio
+.idea/
+*.hprof
+
+# Keystore (IMPORTANTE: nunca subir chaves)
+*.jks
+*.keystore
+
+android/BunnyHop/app/build/
+android/BunnyHop/build/
+
+.DS_Store
+Thumbs.db
+
+*.cache
+*.tmp
+
+bunny_hop_beacon/__pycache__/
