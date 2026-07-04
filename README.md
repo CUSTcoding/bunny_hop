@@ -1,6 +1,8 @@
 # Bunny Hop — Alertas de Cheias via BLE
 
-Sistema MVP para avisar cidadãos quando entram no alcance de uma **zona afetada por cheias**. Cada zona tem um beacon BLE (PC Linux + BlueZ) que anuncia o alerta; a app Android escaneia e envia **notificação + diálogo** com o nome da zona. Sem servidor, sem HTTP — só rádio BLE de curto alcance (1–5 m).
+Sistema MVP para avisar cidadãos quando entram no alcance de uma **zona afetada por cheias**. Cada zona tem um beacon BLE (PC Linux + BlueZ) que anuncia o alerta; a app Android escaneia, mostra **notificação + diálogo** e pode ainda **retransmitir o alerta para outros telemóveis próximos** via BLE.
+
+O objetivo atual é testar um protótipo simples e funcional de propagação local, sem depender de internet.
 
 ## Zonas configuradas
 
@@ -101,8 +103,22 @@ Ou use **nRF Connect** no telemóvel — deve ver o nome da zona + UUID na lista
 2. No telemóvel: abra **Bunny Hop** → **Iniciar alerta**
 3. Aproxime-se do beacon (1–5 m)
 4. Na **primeira detecção**: diálogo + notificação *"Alerta de cheias em Zona 1 — Baixo Mondego."*
-5. Várias zonas podem estar activas ao mesmo tempo — cada uma notifica uma vez ao entrar em alcance
-6. **Parar alerta** para terminar o scan
+5. Se quiser testar a repetição local, toque em **Repetir alerta agora** para o telemóvel anunciar o alerta para outros aparelhos próximos.
+6. Várias zonas podem estar activas ao mesmo tempo — cada uma notifica uma vez ao entrar em alcance.
+7. **Parar alerta** para terminar o scan.
+
+### Admin local de alertas
+
+- A app inclui um ecrã de administração (`Admin Alertas`) para registar alertas no SQLite local.
+- Cada alerta armazena `device_name`, `message`, `active` e `channels`.
+- Os canais disponíveis são `BLE`, `NOTIFICATION`, `SMS`, `USSD` e `HTTP`.
+- Para o MVP atual, o foco está em **BLE + notificação + SMS**, com a retransmissão local para outros telemóveis.
+
+### Botões da app
+
+- **Iniciar alerta**: inicia o scan BLE.
+- **Repetir alerta agora**: faz o telemóvel retransmitir o alerta BLE para aparelhos próximos.
+- **Testar alerta SMS**: dispara um alerta de teste por SMS (ajusta o número no código/configuração, se necessário).
 
 ### Debounce (por zona)
 
@@ -121,8 +137,10 @@ Ou use **nRF Connect** no telemóvel — deve ver o nome da zona + UUID na lista
 | 3 | Abrir Bunny Hop, conceder permissões | Ecrã idle |
 | 4 | **Iniciar alerta** | “Scan ativo…” |
 | 5 | Aproximar telemóvel do beacon | Diálogo + notificação de cheias |
-| 6 | Afastar >10 s, aproximar de novo | Nova notificação |
-| 7 | **Parar alerta** / Ctrl+C no PC | Scan/advertising param |
+| 6 | Tocar em **Repetir alerta agora** | O telemóvel começa a anunciar o alerta BLE para aparelhos próximos |
+| 7 | Num segundo telemóvel, abrir a app e ficar perto | O segundo telemóvel deteta o anúncio e mostra o alerta |
+| 8 | Afastar >10 s, aproximar de novo | Nova notificação |
+| 9 | **Parar alerta** / Ctrl+C no PC | Scan/advertising param |
 
 ### Troubleshooting
 
@@ -131,6 +149,7 @@ Ou use **nRF Connect** no telemóvel — deve ver o nome da zona + UUID na lista
 | `register_advertisement` falha | Sem permissão / adaptador sem peripheral | `sudo` ou `setcap`; dongle USB BLE |
 | Android não vê beacon | BT desligado ou filtro UUID | Confirmar UUID no nRF Connect |
 | Notificação não aparece | POST_NOTIFICATIONS negada | Configurações → Apps → Bunny Hop |
+| Retransmissão BLE não acontece | Permissões BLE/advertiser ausentes ou dispositivo incompatível | Confirmar permissões `BLUETOOTH_ADVERTISE` e usar um telemóvel com suporte BLE advertiser |
 | `ModuleNotFoundError: bluezero` | Dependências Python em falta | `pip install -r bunny_hop_beacon/requirements.txt` |
 
 ---
